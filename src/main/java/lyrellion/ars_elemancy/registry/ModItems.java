@@ -1,6 +1,8 @@
 package lyrellion.ars_elemancy.registry;
 
 import com.hollingsworth.arsnouveau.api.spell.SpellSchools;
+import com.hollingsworth.arsnouveau.common.items.data.ArmorPerkHolder;
+import com.hollingsworth.arsnouveau.setup.registry.DataComponentRegistry;
 import lyrellion.ars_elemancy.ArsNouveauRegistry;
 import lyrellion.ars_elemancy.common.items.*;
 import lyrellion.ars_elemancy.common.items.armor.ArmorSet;
@@ -47,6 +49,23 @@ public class ModItems {
     public static final ArmorSet CINDER_ARMOR = new ArmorSet("cinder", ArsNouveauRegistry.CINDER);
     public static final ArmorSet ELEMANCER_ARMOR = new ArmorSet("elemancer", ArsNouveauRegistry.ELEMENTAL);
 
+    public static final ArmorSet TEMPEST_ARMOR_L;
+    public static final ArmorSet SILT_ARMOR_L;
+    public static final ArmorSet VAPOR_ARMOR_L;
+    public static final ArmorSet MIRE_ARMOR_L;
+    public static final ArmorSet CINDER_ARMOR_L;
+    public static final ArmorSet LAVA_ARMOR_L;
+    public static final ArmorSet ELEMANCER_ARMOR_L;
+
+    public static final ArmorSet TEMPEST_ARMOR_H;
+    public static final ArmorSet SILT_ARMOR_H;
+    public static final ArmorSet VAPOR_ARMOR_H;
+    public static final ArmorSet MIRE_ARMOR_H;
+    public static final ArmorSet CINDER_ARMOR_H;
+    public static final ArmorSet LAVA_ARMOR_H;
+    public static final ArmorSet ELEMANCER_ARMOR_H;
+
+
     // Essences
     public static final DeferredHolder<Item, TempestEssence> TEMPEST_ESSENCE = ITEMS.register("tempest_essence", () -> new TempestEssence(itemProps()));
     public static final DeferredHolder<Item, SiltEssence> SILT_ESSENCE = ITEMS.register("silt_essence", () -> new SiltEssence(itemProps()));
@@ -65,9 +84,25 @@ public class ModItems {
     public static final DeferredHolder<Item, ElemancyBangle> CINDER_BANGLE = ITEMS.register("cinder_bangle", () -> new ElemancyBangle(bangleProps(), ArsNouveauRegistry.CINDER));
     public static final DeferredHolder<Item, ElemancyBangle> ELEMANCER_BANGLE = ITEMS.register("elemancer_bangle", () -> new ElemancyBangle(bangleProps(), SpellSchools.ELEMENTAL));
 
-    // Caster tomes
+    static {
 
-    // Trees
+
+        TEMPEST_ARMOR_H =new ArmorSet.Heavy("storm",SpellSchools.ELEMENTAL_AIR);
+        SILT_ARMOR_H =new ArmorSet.Heavy("desert",SpellSchools.ELEMENTAL_EARTH);
+        VAPOR_ARMOR_H =new ArmorSet.Heavy("steam",SpellSchools.ELEMENTAL_AIR);
+        MIRE_ARMOR_H =new ArmorSet.Heavy("swamp",SpellSchools.ELEMENTAL_FIRE);
+        CINDER_ARMOR_H =new ArmorSet.Heavy("ash",SpellSchools.ELEMENTAL_FIRE);
+        LAVA_ARMOR_H =new ArmorSet.Heavy("magma",SpellSchools.ELEMENTAL_FIRE);
+        ELEMANCER_ARMOR_H =new ArmorSet.Heavy("omni",SpellSchools.ELEMENTAL);
+        TEMPEST_ARMOR_L =new ArmorSet.Light("kirin",SpellSchools.ELEMENTAL_WATER);
+        SILT_ARMOR_L =new ArmorSet.Light("sphinx",SpellSchools.ELEMENTAL_EARTH);
+        VAPOR_ARMOR_L =new ArmorSet.Light("bannik",SpellSchools.ELEMENTAL_AIR);
+        MIRE_ARMOR_L =new ArmorSet.Light("hydra",SpellSchools.ELEMENTAL_FIRE);
+        CINDER_ARMOR_L =new ArmorSet.Light("phoenix",SpellSchools.ELEMENTAL_FIRE);
+        LAVA_ARMOR_L =new ArmorSet.Light("typhon",SpellSchools.ELEMENTAL_FIRE);
+        ELEMANCER_ARMOR_L =new ArmorSet.Light("tiamat",SpellSchools.ELEMENTAL);
+
+    };
 
     static Item.Properties itemProps() {
         return new Item.Properties();
@@ -85,8 +120,8 @@ public class ModItems {
         return itemProps().stacksTo(1).rarity(Rarity.UNCOMMON);
     }
 
-    public static Item.Properties armorProps() {
-        return itemProps().rarity(Rarity.EPIC);
+    public static Item.Properties ArmorProp() {
+        return itemProps().stacksTo(1).rarity(Rarity.EPIC).component(DataComponentRegistry.ARMOR_PERKS, new ArmorPerkHolder());
     }
 
     static DeferredHolder<Block, ? extends Block> addBlock(String name, Supplier<Block> blockSupp) {
