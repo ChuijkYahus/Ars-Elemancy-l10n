@@ -8,7 +8,9 @@ import com.hollingsworth.arsnouveau.api.spell.SpellSchool;
 import com.hollingsworth.arsnouveau.api.spell.SpellStats;
 import com.hollingsworth.arsnouveau.setup.registry.MaterialRegistry;
 import net.minecraft.core.Holder;
+import net.minecraft.tags.TagKey;
 import net.minecraft.world.damagesource.DamageSource;
+import net.minecraft.world.damagesource.DamageType;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.item.ArmorMaterial;
 import net.minecraft.world.item.ItemStack;
@@ -18,21 +20,13 @@ import net.minecraft.world.phys.HitResult;
 import javax.annotation.Nullable;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
+import java.util.concurrent.ConcurrentHashMap;
 
 public interface IElemancyArmor extends IElementalArmor {
-    static Holder<ArmorMaterial> schoolToMaterial(SpellSchool element) {
-        return switch (element.getId()) {
-            case "tempest" -> AAMaterials.TEMPEST;
-            case "silt" -> AAMaterials.SILT;
-            case "mire" -> AAMaterials.MIRE;
-            case "vapor" -> AAMaterials.VAPOR;
-            case "lava" -> AAMaterials.LAVA;
-            case "cinder" -> AAMaterials.CINDER;
-            case "elemental" -> AAMaterials.ELEMANCER;
 
-            default -> MaterialRegistry.MEDIUM;
-        };
-    }
+    Map<SpellSchool, TagKey<DamageType>> damageResistances = new ConcurrentHashMap<>();
+
 
     @Override
     default SpellStats.Builder applyItemModifiers(ItemStack stack, SpellStats.Builder builder, AbstractSpellPart spellPart, HitResult rayTraceResult, Level world, @Nullable LivingEntity shooter, SpellContext spellContext) {

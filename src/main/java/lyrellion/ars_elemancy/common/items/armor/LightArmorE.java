@@ -2,9 +2,11 @@ package lyrellion.ars_elemancy.common.items.armor;
 
 import alexthw.ars_elemental.ArsElemental;
 import alexthw.ars_elemental.ConfigHandler;
+import alexthw.ars_elemental.common.items.armor.ElementalArmor;
 import com.alexthw.sauce.event.AttributeEventHandler;
 import com.hollingsworth.arsnouveau.api.spell.SpellSchool;
 import com.hollingsworth.arsnouveau.api.spell.SpellSchools;
+import lyrellion.ars_elemancy.api.item.IElemancyArmor;
 import net.minecraft.ChatFormatting;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.entity.EquipmentSlotGroup;

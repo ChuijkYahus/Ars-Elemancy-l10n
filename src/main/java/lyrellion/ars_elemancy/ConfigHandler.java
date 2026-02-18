@@ -5,6 +5,8 @@ import org.apache.commons.lang3.tuple.Pair;
 
 public class ConfigHandler {
 
+    public static Object Startup;
+
     public static class Common {
         public final ModConfigSpec.ConfigValue<Double> MajorFocusDiscount;
         public final ModConfigSpec.ConfigValue<Boolean> EnableRegenBonus;
@@ -35,9 +37,9 @@ public class ConfigHandler {
             SiltMasteryBuff = builder.define("silt_focus_buff", 1.0D);
             VaporMasteryBuff = builder.define("vapor_focus_buff", 1.0D);
             MireMasteryBuff = builder.define("mire_focus_buff", 1.0D);
-            LavaMasteryBuff = builder.define("fire_focus_buff", 1.0D);
+            LavaMasteryBuff = builder.define("lava_focus_buff", 1.0D);
             CinderMasteryBuff = builder.define("cinder_focus_buff", 1.0D);
-            ElementalMasteryBuff = builder.define("fire_focus_buff", 1.0D);
+            ElementalMasteryBuff = builder.define("elemental_focus_buff", 1.0D);
 
             builder.comment("Adjust Elemental Armor Mana Buffs").push("Elemental Armors");
 

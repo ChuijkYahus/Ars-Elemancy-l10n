@@ -41,13 +41,13 @@ public class ModItems {
     public static final DeferredHolder<Item, ElemancyFocus> ELEMANCER_FOCUS = ITEMS.register("elemancer_focus", () -> new ElemancyFocus(focusProps(), SpellSchools.ELEMENTAL));
 
     // Armor Sets
-    public static final ArmorSet TEMPEST_ARMOR = new ArmorSet("tempest", ArsNouveauRegistry.TEMPEST);
-    public static final ArmorSet MIRE_ARMOR = new ArmorSet("mire", ArsNouveauRegistry.MIRE);
-    public static final ArmorSet SILT_ARMOR = new ArmorSet("silt", ArsNouveauRegistry.SILT);
-    public static final ArmorSet LAVA_ARMOR = new ArmorSet("lava", ArsNouveauRegistry.LAVA);
-    public static final ArmorSet VAPOR_ARMOR = new ArmorSet("vapor", ArsNouveauRegistry.VAPOR);
-    public static final ArmorSet CINDER_ARMOR = new ArmorSet("cinder", ArsNouveauRegistry.CINDER);
-    public static final ArmorSet ELEMANCER_ARMOR = new ArmorSet("elemancer", ArsNouveauRegistry.ELEMENTAL);
+    public static final ArmorSet TEMPEST_ARMOR = new ArmorSet.Medium("tempest", ArsNouveauRegistry.TEMPEST);
+    public static final ArmorSet MIRE_ARMOR = new ArmorSet.Medium("mire", ArsNouveauRegistry.MIRE);
+    public static final ArmorSet SILT_ARMOR = new ArmorSet.Medium("silt", ArsNouveauRegistry.SILT);
+    public static final ArmorSet LAVA_ARMOR = new ArmorSet.Medium("lava", ArsNouveauRegistry.LAVA);
+    public static final ArmorSet VAPOR_ARMOR = new ArmorSet.Medium("vapor", ArsNouveauRegistry.VAPOR);
+    public static final ArmorSet CINDER_ARMOR = new ArmorSet.Medium("cinder", ArsNouveauRegistry.CINDER);
+    public static final ArmorSet ELEMANCER_ARMOR = new ArmorSet.Medium("elemancer", ArsNouveauRegistry.ELEMENTAL);
 
     public static final ArmorSet TEMPEST_ARMOR_L;
     public static final ArmorSet SILT_ARMOR_L;
@@ -87,20 +87,20 @@ public class ModItems {
     static {
 
 
-        TEMPEST_ARMOR_H =new ArmorSet.Heavy("storm",SpellSchools.ELEMENTAL_AIR);
-        SILT_ARMOR_H =new ArmorSet.Heavy("desert",SpellSchools.ELEMENTAL_EARTH);
-        VAPOR_ARMOR_H =new ArmorSet.Heavy("steam",SpellSchools.ELEMENTAL_AIR);
-        MIRE_ARMOR_H =new ArmorSet.Heavy("swamp",SpellSchools.ELEMENTAL_FIRE);
-        CINDER_ARMOR_H =new ArmorSet.Heavy("ash",SpellSchools.ELEMENTAL_FIRE);
-        LAVA_ARMOR_H =new ArmorSet.Heavy("magma",SpellSchools.ELEMENTAL_FIRE);
-        ELEMANCER_ARMOR_H =new ArmorSet.Heavy("omni",SpellSchools.ELEMENTAL);
-        TEMPEST_ARMOR_L =new ArmorSet.Light("kirin",SpellSchools.ELEMENTAL_WATER);
-        SILT_ARMOR_L =new ArmorSet.Light("sphinx",SpellSchools.ELEMENTAL_EARTH);
-        VAPOR_ARMOR_L =new ArmorSet.Light("bannik",SpellSchools.ELEMENTAL_AIR);
-        MIRE_ARMOR_L =new ArmorSet.Light("hydra",SpellSchools.ELEMENTAL_FIRE);
-        CINDER_ARMOR_L =new ArmorSet.Light("phoenix",SpellSchools.ELEMENTAL_FIRE);
-        LAVA_ARMOR_L =new ArmorSet.Light("typhon",SpellSchools.ELEMENTAL_FIRE);
-        ELEMANCER_ARMOR_L =new ArmorSet.Light("tiamat",SpellSchools.ELEMENTAL);
+        TEMPEST_ARMOR_H = new ArmorSet.Heavy("tempest",ArsNouveauRegistry.TEMPEST);
+        SILT_ARMOR_H = new ArmorSet.Heavy("silt",ArsNouveauRegistry.SILT);
+        VAPOR_ARMOR_H = new ArmorSet.Heavy("vapor",ArsNouveauRegistry.VAPOR);
+        MIRE_ARMOR_H = new ArmorSet.Heavy("mire",ArsNouveauRegistry.MIRE);
+        CINDER_ARMOR_H = new ArmorSet.Heavy("cinder",ArsNouveauRegistry.CINDER);
+        LAVA_ARMOR_H = new ArmorSet.Heavy("lava",ArsNouveauRegistry.LAVA);
+        ELEMANCER_ARMOR_H = new ArmorSet.Heavy("elemancer",SpellSchools.ELEMENTAL);
+        TEMPEST_ARMOR_L = new ArmorSet.Light("tempest",ArsNouveauRegistry.TEMPEST);
+        SILT_ARMOR_L = new ArmorSet.Light("silt",ArsNouveauRegistry.SILT);
+        VAPOR_ARMOR_L = new ArmorSet.Light("vapor",ArsNouveauRegistry.VAPOR);
+        MIRE_ARMOR_L = new ArmorSet.Light("mire",ArsNouveauRegistry.MIRE);
+        CINDER_ARMOR_L = new ArmorSet.Light("cinder",ArsNouveauRegistry.CINDER);
+        LAVA_ARMOR_L = new ArmorSet.Light("lava",ArsNouveauRegistry.LAVA);
+        ELEMANCER_ARMOR_L = new ArmorSet.Light("elemancer",SpellSchools.ELEMENTAL);
 
     };
 

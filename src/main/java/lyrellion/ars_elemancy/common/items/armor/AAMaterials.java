@@ -1,5 +1,6 @@
 package lyrellion.ars_elemancy.common.items.armor;
 
+import alexthw.ars_elemental.ArsElemental;
 import net.minecraft.Util;
 import net.minecraft.core.Holder;
 import net.minecraft.core.registries.BuiltInRegistries;
@@ -16,7 +17,9 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.function.Supplier;
 
+import static alexthw.ars_elemental.common.items.armor.AAMaterials.*;
 import static lyrellion.ars_elemancy.ArsElemancy.MODID;
+import static net.minecraft.core.Holder.*;
 
 public class AAMaterials {
 
@@ -37,13 +40,48 @@ public class AAMaterials {
     public final static Holder<ArmorMaterial> EARTH = A_MATERIALS.register("medium_earth", () -> new ArmorMaterial(ARMOR_SLOT_PROTECTION, 40, new Holder.Direct<>(SoundEvents.ANVIL_PLACE), () -> Ingredient.EMPTY, List.of(), 2.0f, 0.02F));
     public final static Holder<ArmorMaterial> AIR = A_MATERIALS.register("medium_air", () -> new ArmorMaterial(ARMOR_SLOT_PROTECTION, 40, SoundEvents.ARMOR_EQUIP_ELYTRA, () -> Ingredient.EMPTY, List.of(), 2.0f, 0));
 
-    public final static Holder<ArmorMaterial> TEMPEST = registerMerged("tempest", SoundEvents.ARMOR_EQUIP_ELYTRA, () -> Ingredient.EMPTY, List.of(), AIR, WATER);
-    public final static Holder<ArmorMaterial> SILT =  registerMerged("silt", new Holder.Direct<>(SoundEvents.ANVIL_PLACE), () -> Ingredient.EMPTY, List.of(), AIR, EARTH);
-    public final static Holder<ArmorMaterial> MIRE = registerMerged("mire", new Holder.Direct<>(SoundEvents.ANVIL_PLACE), () -> Ingredient.EMPTY, List.of(), EARTH, WATER);
-    public final static Holder<ArmorMaterial> VAPOR = registerMerged("vapor", new Holder.Direct<>(SoundEvents.GENERIC_BURN), () -> Ingredient.EMPTY, List.of(), FIRE, WATER);
-    public final static Holder<ArmorMaterial> LAVA = registerMerged("lava", new Holder.Direct<>(SoundEvents.GENERIC_BURN), () -> Ingredient.EMPTY, List.of(), FIRE, EARTH);
-    public final static Holder<ArmorMaterial> CINDER = registerMerged("cinder", new Holder.Direct<>(SoundEvents.GENERIC_BURN), () -> Ingredient.EMPTY, List.of(), AIR, FIRE);
-    public final static Holder<ArmorMaterial> ELEMANCER = registerMerged("elemancer", SoundEvents.ARMOR_EQUIP_GENERIC, () -> Ingredient.EMPTY, List.of(), FIRE, WATER, EARTH, AIR);
+    public final static Holder<ArmorMaterial> l_tempest = A_MATERIALS.register("light_tempest", () -> new ArmorMaterial(ARMOR_SLOT_PROTECTION_L, 50, new Holder.Direct<>(SoundEvents.SLIME_JUMP), () -> Ingredient.EMPTY, List.of(new ArmorMaterial.Layer(ArsElemental.prefix("light_tempest"))), 1.0f, 0));
+    public final static Holder<ArmorMaterial> l_silt =  A_MATERIALS.register("light_silt", () -> new ArmorMaterial(ARMOR_SLOT_PROTECTION_L, 50, new Holder.Direct<>(SoundEvents.SLIME_JUMP), () -> Ingredient.EMPTY, List.of(new ArmorMaterial.Layer(ArsElemental.prefix("light_silt"))), 1.0f, 0));
+    public final static Holder<ArmorMaterial> l_mire = A_MATERIALS.register("light_mire", () -> new ArmorMaterial(ARMOR_SLOT_PROTECTION_L, 50,  new Holder.Direct<>(SoundEvents.SLIME_JUMP), () -> Ingredient.EMPTY, List.of(new ArmorMaterial.Layer(ArsElemental.prefix("light_mire"))), 1.0f, 0));
+    public final static Holder<ArmorMaterial> l_vapor = A_MATERIALS.register("light_vapor", () -> new ArmorMaterial(ARMOR_SLOT_PROTECTION_L
+            , 50, new Holder.Direct<>(SoundEvents.BREWING_STAND_BREW), () -> Ingredient.EMPTY, List.of(new ArmorMaterial.Layer(ArsElemental.prefix("light_vapor"))), 1.0f, 0));
+    public final static Holder<ArmorMaterial> l_lava = A_MATERIALS.register("light_lava", () -> new ArmorMaterial(ARMOR_SLOT_PROTECTION_L
+            , 50, new Holder.Direct<>(SoundEvents.LAVA_AMBIENT), () -> Ingredient.EMPTY, List.of(new ArmorMaterial.Layer(ArsElemental.prefix("light_lava"))), 1.0f, 0));
+    public final static Holder<ArmorMaterial> l_cinder = A_MATERIALS.register("light_cinder", () -> new ArmorMaterial(ARMOR_SLOT_PROTECTION_L
+            , 50, new Holder.Direct<>(SoundEvents.GENERIC_BURN), () -> Ingredient.EMPTY, List.of(new ArmorMaterial.Layer(ArsElemental.prefix("light_cinder"))), 1.0f, 0));
+    public final static Holder<ArmorMaterial> l_elemancer = A_MATERIALS.register("light_elemancer", () -> new ArmorMaterial(ARMOR_SLOT_PROTECTION_L
+            , 50, new Holder.Direct<>(SoundEvents.AMETHYST_BLOCK_RESONATE), () -> Ingredient.EMPTY, List.of(new ArmorMaterial.Layer(ArsElemental.prefix("light_elemancer"))), 1.0f, 0));
+
+    public final static Holder<ArmorMaterial> tempest = A_MATERIALS.register("medium_tempest", () -> new ArmorMaterial(ARMOR_SLOT_PROTECTION_M
+            , 40, new Holder.Direct<>(SoundEvents.LIGHTNING_BOLT_THUNDER), () -> Ingredient.EMPTY, List.of(new ArmorMaterial.Layer(ArsElemental.prefix("medium_tempest"))), 2.0f, 0.025F));
+    public final static Holder<ArmorMaterial> silt =  A_MATERIALS.register("medium_silt", () -> new ArmorMaterial(ARMOR_SLOT_PROTECTION_M
+            , 40, new Holder.Direct<>(SoundEvents.BREEZE_SHOOT), () -> Ingredient.EMPTY, List.of(new ArmorMaterial.Layer(ArsElemental.prefix("medium_silt"))), 2.0f, 0.05F));
+    public final static Holder<ArmorMaterial> mire = A_MATERIALS.register("medium_mire", () -> new ArmorMaterial(ARMOR_SLOT_PROTECTION_M
+            , 40, new Holder.Direct<>(SoundEvents.SLIME_JUMP), () -> Ingredient.EMPTY, List.of(new ArmorMaterial.Layer(ArsElemental.prefix("medium_mire"))), 2.0f, 0.05F));
+    public final static Holder<ArmorMaterial> vapor = A_MATERIALS.register("medium_vapor", () -> new ArmorMaterial(ARMOR_SLOT_PROTECTION_M
+            , 40, new Holder.Direct<>(SoundEvents.BREWING_STAND_BREW), () -> Ingredient.EMPTY, List.of(new ArmorMaterial.Layer(ArsElemental.prefix("medium_vapor"))), 2.0f, 0.025F));
+    public final static Holder<ArmorMaterial> lava = A_MATERIALS.register("medium_lava", () -> new ArmorMaterial(ARMOR_SLOT_PROTECTION_M
+            , 40, new Holder.Direct<>(SoundEvents.LAVA_AMBIENT), () -> Ingredient.EMPTY, List.of(new ArmorMaterial.Layer(ArsElemental.prefix("medium_lava"))), 2.0f, 0.05F));
+    public final static Holder<ArmorMaterial> cinder = A_MATERIALS.register("medium_cinder", () -> new ArmorMaterial(ARMOR_SLOT_PROTECTION_M
+            , 40, new Holder.Direct<>(SoundEvents.GENERIC_BURN), () -> Ingredient.EMPTY, List.of(new ArmorMaterial.Layer(ArsElemental.prefix("medium_cinder"))), 2.0f, 0.025F));
+    public final static Holder<ArmorMaterial> elemancer = A_MATERIALS.register("medium_elemancer", () -> new ArmorMaterial(ARMOR_SLOT_PROTECTION_M
+            , 40, new Holder.Direct<>(SoundEvents.AMETHYST_BLOCK_RESONATE), () -> Ingredient.EMPTY, List.of(new ArmorMaterial.Layer(ArsElemental.prefix("medium_elemancer"))), 2.0f, 0.05F));
+
+    public final static Holder<ArmorMaterial> h_tempest = A_MATERIALS.register("heavy_tempest", () -> new ArmorMaterial(ARMOR_SLOT_PROTECTION_H
+            , 30, new Holder.Direct<>(SoundEvents.LIGHTNING_BOLT_THUNDER), () -> Ingredient.EMPTY, List.of(new ArmorMaterial.Layer(ArsElemental.prefix("heavy_tempest"))), 4.0f, 0.05F));
+    public final static Holder<ArmorMaterial> h_silt =  A_MATERIALS.register("heavy_silt", () -> new ArmorMaterial(ARMOR_SLOT_PROTECTION_H
+            , 30, new Holder.Direct<>(SoundEvents.BREEZE_SHOOT), () -> Ingredient.EMPTY, List.of(new ArmorMaterial.Layer(ArsElemental.prefix("heavy_silt"))), 4.0f, 0.1F));
+    public final static Holder<ArmorMaterial> h_mire = A_MATERIALS.register("heavy_mire", () -> new ArmorMaterial(ARMOR_SLOT_PROTECTION_H
+            , 30, new Holder.Direct<>(SoundEvents.SLIME_JUMP), () -> Ingredient.EMPTY, List.of(new ArmorMaterial.Layer(ArsElemental.prefix("heavy_mire"))), 4.0f, 0.1F));
+    public final static Holder<ArmorMaterial> h_vapor = A_MATERIALS.register("heavy_vapor", () -> new ArmorMaterial(ARMOR_SLOT_PROTECTION_H
+            , 30, new Holder.Direct<>(SoundEvents.BREWING_STAND_BREW), () -> Ingredient.EMPTY, List.of(new ArmorMaterial.Layer(ArsElemental.prefix("heavy_vapor"))), 4.0f, 0.05F));
+    public final static Holder<ArmorMaterial> h_lava = A_MATERIALS.register("heavy_lava", () -> new ArmorMaterial(ARMOR_SLOT_PROTECTION_H
+            , 30, new Holder.Direct<>(SoundEvents.LAVA_AMBIENT), () -> Ingredient.EMPTY, List.of(new ArmorMaterial.Layer(ArsElemental.prefix("heavy_lava"))), 4.0f, 0.1F));
+    public final static Holder<ArmorMaterial> h_cinder = A_MATERIALS.register("heavy_cinder", () -> new ArmorMaterial(ARMOR_SLOT_PROTECTION_H
+            , 30, new Holder.Direct<>(SoundEvents.GENERIC_BURN), () -> Ingredient.EMPTY, List.of(new ArmorMaterial.Layer(ArsElemental.prefix("heavy_cinder"))), 4.0f, 0.05F));
+    public final static Holder<ArmorMaterial> h_elemancer = A_MATERIALS.register("heavy_elemancer", () -> new ArmorMaterial(ARMOR_SLOT_PROTECTION_H
+            , 30, new Holder.Direct<>(SoundEvents.AMETHYST_BLOCK_RESONATE), () -> Ingredient.EMPTY, List.of(new ArmorMaterial.Layer(ArsElemental.prefix("heavy_elemancer"))), 4.0f, 0.05F));
+
 
     @SafeVarargs
     @SuppressWarnings("SameParameterValue")

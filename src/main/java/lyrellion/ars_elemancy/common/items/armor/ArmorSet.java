@@ -33,10 +33,10 @@ public class ArmorSet {
             SpellSchools.ELEMENTAL_FIRE, SpellSchools.ELEMENTAL_EARTH
     );
     protected String name;
-    protected DeferredHolder<Item, ElementalArmor> head;
-    protected DeferredHolder<Item, ElementalArmor> chest;
-    protected DeferredHolder<Item, ElementalArmor> legs;
-    protected DeferredHolder<Item, ElementalArmor> feet;
+    protected DeferredHolder<Item, MediumArmorE> head;
+    protected DeferredHolder<Item, MediumArmorE> chest;
+    protected DeferredHolder<Item, MediumArmorE> legs;
+    protected DeferredHolder<Item, MediumArmorE> feet;
 
     public static class Light extends ArmorSet {
         public Light(String name, SpellSchool element) {
@@ -103,6 +103,6 @@ public class ArmorSet {
     }
 
     public String getTranslationKey() {
-        return "ars_elemental.armor_set." + this.name;
+        return "ars_elemancy.armor_set." + this.name;
     }
 }

@@ -1,5 +1,8 @@
 package lyrellion.ars_elemancy.common.items.armor;
 
+import alexthw.ars_elemental.ArsElemental;
+import com.hollingsworth.arsnouveau.api.spell.SpellSchools;
+import com.hollingsworth.arsnouveau.setup.registry.MaterialRegistry;
 import lyrellion.ars_elemancy.ArsElemancy;
 import lyrellion.ars_elemancy.api.item.IElemancyArmor;
 import lyrellion.ars_elemancy.client.TooltipUtils;
@@ -17,6 +20,7 @@ import com.hollingsworth.arsnouveau.api.util.PerkUtil;
 import com.hollingsworth.arsnouveau.common.armor.AnimatedMagicArmor;
 import net.minecraft.ChatFormatting;
 import net.minecraft.client.model.HumanoidModel;
+import net.minecraft.core.Holder;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.MutableComponent;
 import net.minecraft.resources.ResourceLocation;
@@ -38,6 +42,8 @@ import software.bernie.geckolib.renderer.GeoArmorRenderer;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
+import java.util.concurrent.ConcurrentHashMap;
 import java.util.function.Consumer;
 
 import static lyrellion.ars_elemancy.ConfigHandler.Common.ARMOR_MANA_REGEN;
@@ -48,11 +54,29 @@ public class ElemancyArmor extends AnimatedMagicArmor implements IElemancyArmor,
 
     final SpellSchool element;
 
-    @SuppressWarnings({"unchecked", "rawtypes"})
-    public ElemancyArmor(ArmorItem.Type slot, SpellSchool element, Properties builder) {
-        super(IElemancyArmor.schoolToMaterial(element), slot, new ElemancyArmorModel("medium_armor_e").withEmptyAnim());
-        this.element = element;
-    }
+    static Map<String, Holder<ArmorMaterial>> SCHOOL_TO_MATERIAL = new ConcurrentHashMap<>() {{
+        put("tempest_heavy", AAMaterials.h_tempest);
+        put("silt_heavy", AAMaterials.h_silt);
+        put("vapor_heavy", AAMaterials.h_vapor);
+        put("mire_heavy", AAMaterials.h_mire);
+        put("cinder_heavy", AAMaterials.h_cinder);
+        put("lava_heavy", AAMaterials.h_lava);
+        put("elemancer_heavy", AAMaterials.h_elemancer);
+        put("tempest", AAMaterials.tempest);
+        put("silt", AAMaterials.silt);
+        put("lava", AAMaterials.lava);
+        put("vapor", AAMaterials.vapor);
+        put("mire", AAMaterials.mire);
+        put("cinder", AAMaterials.cinder);
+        put("elemancer", AAMaterials.elemancer);
+        put("tempest_light", AAMaterials.l_tempest);
+        put("silt_light", AAMaterials.l_silt);
+        put("lava_light", AAMaterials.l_lava);
+        put("vapor_light", AAMaterials.l_vapor);
+        put("mire_light", AAMaterials.l_mire);
+        put("cinder_light", AAMaterials.l_cinder);
+        put("elemancer_light", AAMaterials.l_elemancer);
+    }};
 
     @Override
     public int getMinTier() {
@@ -77,7 +101,7 @@ public class ElemancyArmor extends AnimatedMagicArmor implements IElemancyArmor,
     public void appendHoverText(@NotNull ItemStack stack, @NotNull TooltipContext context, @NotNull List<Component> tooltip, @NotNull TooltipFlag flags) {
         var perkProvider = PerkUtil.getPerkHolder(stack);
         if (perkProvider != null) {
-            tooltip.add(Component.translatable("ars_nouveau.tier", 5).withStyle(ChatFormatting.GOLD));
+            tooltip.add(Component.translatable("ars_nouveau.tier", 4).withStyle(ChatFormatting.GOLD));
             perkProvider.appendPerkTooltip(tooltip, stack);
         }
         TooltipUtils.addOnShift(tooltip, () -> addInformationAfterShift(stack, context, tooltip, flags), "armor_set");
@@ -85,49 +109,53 @@ public class ElemancyArmor extends AnimatedMagicArmor implements IElemancyArmor,
 
     EquipmentSlot[] OrderedSlots = {EquipmentSlot.HEAD, EquipmentSlot.CHEST, EquipmentSlot.LEGS, EquipmentSlot.FEET};
 
-    @OnlyIn(Dist.CLIENT)
-    public void addInformationAfterShift(ItemStack stack, TooltipContext context, List<Component> list, TooltipFlag flags) {
-        Player player = ArsNouveau.proxy.getPlayer();
-        if (player != null) {
-            ArmorSet set = getArmorSetFromElement(this.element);
-            if (set == null) {
-                return;
-            }
-            List<Component> equippedList = new ArrayList<>();
-            //check if the player have all the armor pieces of the set. Color the text green if they do, gray if they don't
-            int equippedCounter = 0;
-            for (EquipmentSlot slot : OrderedSlots) {
-                Item armor = set.getArmorFromSlot(slot);
-                MutableComponent cmp = Component.literal(" - ").append(armor.getDefaultInstance().getHoverName());
-                if (hasArmorSetItem(player.getItemBySlot(slot), armor)) {
-                    cmp.withStyle(ChatFormatting.GREEN);
-                    equippedCounter++;
-                } else cmp.withStyle(ChatFormatting.GRAY);
-
-                equippedList.add(cmp);
-            }
-            //add the tooltip for the armor set and the list of equipped armor pieces, then add the description
-            list.add(getArmorSetTitle(set, equippedCounter));
-            list.addAll(equippedList);
-            addArmorSetDescription(set, list);
-        }
+    @SuppressWarnings({"unchecked", "rawtypes"})
+    public ElemancyArmor(ArmorItem.Type slot, SpellSchool element, Holder<ArmorMaterial> material, Properties builder) {
+        super(material, slot, builder, new ElemancyArmorModel("medium_armor_e").withEmptyAnim());
+        this.element = element;
     }
 
     private boolean hasArmorSetItem(ItemStack armor, Item armorFromSlot) {
         return armor.getItem() == armorFromSlot;
     }
 
-    ArmorSet getArmorSetFromElement(SpellSchool element) {
-        return switch (element.getId()) {
-            case "tempest" -> ModItems.TEMPEST_ARMOR;
-            case "silt" -> ModItems.SILT_ARMOR;
-            case "mire" -> ModItems.MIRE_ARMOR;
-            case "vapor" -> ModItems.VAPOR_ARMOR;
-            case "lava" -> ModItems.LAVA_ARMOR;
-            case "cinder" -> ModItems.CINDER_ARMOR;
-            case "elemental" -> ModItems.ELEMANCER_ARMOR;
-            default -> null;
+    public static ArmorSet getArmorSetFromElement(SpellSchool school, String tier) {
+        return switch (tier) {
+            case "light" -> switch (school.getId()) {
+                case "tempest" -> ModItems.TEMPEST_ARMOR_L;
+                case "silt" -> ModItems.SILT_ARMOR_L;
+                case "mire" -> ModItems.MIRE_ARMOR_L;
+                case "vapor" -> ModItems.VAPOR_ARMOR_L;
+                case "lava" -> ModItems.LAVA_ARMOR_L;
+                case "cinder" -> ModItems.CINDER_ARMOR_L;
+                case "elemancer" -> ModItems.ELEMANCER_ARMOR_L;
+                default -> new ArmorSet.Light("necro", SpellSchools.NECROMANCY);
+            };
+            case "heavy" -> switch (school.getId()) {
+                case "tempest" -> ModItems.TEMPEST_ARMOR_H;
+                case "silt" -> ModItems.SILT_ARMOR_H;
+                case "mire" -> ModItems.MIRE_ARMOR_H;
+                case "vapor" -> ModItems.VAPOR_ARMOR_H;
+                case "lava" -> ModItems.LAVA_ARMOR_H;
+                case "cinder" -> ModItems.CINDER_ARMOR_H;
+                case "elemancer" -> ModItems.ELEMANCER_ARMOR_H;
+                default -> new ArmorSet.Heavy("necro", SpellSchools.NECROMANCY);
+            };
+            default -> switch (school.getId()) {
+                case "tempest" -> ModItems.TEMPEST_ARMOR;
+                case "silt" -> ModItems.SILT_ARMOR;
+                case "mire" -> ModItems.MIRE_ARMOR;
+                case "vapor" -> ModItems.VAPOR_ARMOR;
+                case "lava" -> ModItems.LAVA_ARMOR;
+                case "cinder" -> ModItems.CINDER_ARMOR;
+                case "elemancer" -> ModItems.ELEMANCER_ARMOR;
+                default -> new ArmorSet.Medium("necro", SpellSchools.NECROMANCY);
+            };
         };
+    }
+
+    static Holder<ArmorMaterial> schoolToMaterial(String key) {
+        return SCHOOL_TO_MATERIAL.getOrDefault(key, MaterialRegistry.MEDIUM);
     }
 
     private Component getArmorSetTitle(ArmorSet set, int equipped) {
@@ -135,24 +163,8 @@ public class ElemancyArmor extends AnimatedMagicArmor implements IElemancyArmor,
     }
 
     public void addArmorSetDescription(ArmorSet set, List<Component> list) {
-        list.add(Component.translatable("ars_elemancy.armor_set." + set.getName() + ".desc").withStyle(ChatFormatting.GRAY));
+        list.add(Component.translatable("ars_elemental.armor_set." + set.getName() + ".desc").withStyle(ChatFormatting.GRAY));
     }
-
-
-    @Override
-    public @NotNull ItemAttributeModifiers getDefaultAttributeModifiers(@NotNull ItemStack stack) {
-        var modifiers = super.getDefaultAttributeModifiers()
-                .withModifierAdded(PerkAttributes.MAX_MANA, new AttributeModifier(ArsNouveau.prefix("max_mana_armor_" + this.type.getName()), ARMOR_MAX_MANA.get(), AttributeModifier.Operation.ADD_VALUE), EquipmentSlotGroup.bySlot(this.type.getSlot()))
-                .withModifierAdded(PerkAttributes.MANA_REGEN_BONUS, new AttributeModifier(ArsNouveau.prefix("mana_regen_armor_" + this.type.getName()), ARMOR_MANA_REGEN.get(), AttributeModifier.Operation.ADD_VALUE), EquipmentSlotGroup.bySlot(this.type.getSlot()));
-
-        for (PerkInstance perkInstance : PerkUtil.getPerksFromItem(stack)) {
-            IPerk perk = perkInstance.getPerk();
-            modifiers = perk.applyAttributeModifiers(modifiers, stack, perkInstance.getSlot().value(), EquipmentSlotGroup.bySlot(this.type.getSlot()));
-        }
-
-        return modifiers;
-    }
-
 
     @Override
     public void createGeoRenderer(Consumer<GeoRenderProvider> consumer) {
@@ -166,11 +178,43 @@ public class ElemancyArmor extends AnimatedMagicArmor implements IElemancyArmor,
         });
     }
 
+    @OnlyIn(Dist.CLIENT)
+    public void addInformationAfterShift(ItemStack stack, TooltipContext context, List<Component> list, TooltipFlag flags) {
+        Player player = ArsNouveau.proxy.getPlayer();
+        if (player != null) {
+            ArmorSet set = getArmorSetFromElement(this.element, getTier());
+            List<Component> equippedList = new ArrayList<>();
+            //check if the player have all the armor pieces of the set. Color the text green if they do, gray if they don't
+            int equippedCounter = 0;
+            for (EquipmentSlot slot : OrderedSlots) {
+                Item armor = set.getArmorFromSlot(slot);
+                MutableComponent cmp = Component.literal(" - ").append(armor.getDefaultInstance().getHoverName());
+                if (player.getItemBySlot(slot).getItem() == armor) {
+                    cmp.withStyle(ChatFormatting.GREEN);
+                    equippedCounter++;
+                } else cmp.withStyle(ChatFormatting.GRAY);
+
+                equippedList.add(cmp);
+            }
+            //add the tooltip for the armor set and the list of equipped armor pieces, then add the description
+            list.add(getArmorSetTitle(set, equippedCounter));
+            list.addAll(equippedList);
+            addArmorSetDescription(set, list);
+        }
+    }
+
+    @Override
+    public @NotNull ItemAttributeModifiers getDefaultAttributeModifiers(@NotNull ItemStack stack) {
+        return super.getDefaultAttributeModifiers(stack)
+                .withModifierAdded(PerkAttributes.MAX_MANA, new AttributeModifier(ArsNouveau.prefix("max_mana_armor_" + this.type.getName()), ARMOR_MAX_MANA.get(), AttributeModifier.Operation.ADD_VALUE), EquipmentSlotGroup.bySlot(this.type.getSlot()))
+                .withModifierAdded(PerkAttributes.MANA_REGEN_BONUS, new AttributeModifier(ArsNouveau.prefix("mana_regen_armor_" + this.type.getName()), ARMOR_MANA_REGEN.get(), AttributeModifier.Operation.ADD_VALUE), EquipmentSlotGroup.bySlot(this.type.getSlot()));
+    }
+
     /*
      * Needed to avoid file not found errors since Geckolib doesn't redirect to the correct texture
      */
     @Override
-    public @Nullable ResourceLocation getArmorTexture(@NotNull ItemStack stack, @NotNull Entity entity, @NotNull EquipmentSlot slot, ArmorMaterial.Layer layer, boolean innerModel) {
+    public @Nullable ResourceLocation getArmorTexture(@NotNull ItemStack stack, @NotNull Entity entity, @NotNull EquipmentSlot slot, ArmorMaterial.@NotNull Layer layer, boolean innerModel) {
         return ResourceLocation.fromNamespaceAndPath(ArsElemancy.MODID, "textures/armor/" + getTier() + "_armor_" + this.getSchool().getId() + ".png");
     }
 }
