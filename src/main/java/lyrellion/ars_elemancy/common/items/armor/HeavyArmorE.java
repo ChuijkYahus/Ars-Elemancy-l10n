@@ -6,6 +6,7 @@ import com.alexthw.sauce.event.AttributeEventHandler;
 import alexthw.ars_elemental.common.items.armor.ElementalArmor;
 import com.hollingsworth.arsnouveau.api.spell.SpellSchool;
 import com.hollingsworth.arsnouveau.api.spell.SpellSchools;
+import lyrellion.ars_elemancy.ArsElemancy;
 import lyrellion.ars_elemancy.api.item.IElemancyArmor;
 import net.minecraft.ChatFormatting;
 import net.minecraft.network.chat.Component;
@@ -37,13 +38,13 @@ public class HeavyArmorE extends ElemancyArmor {
     public @NotNull ItemAttributeModifiers getDefaultAttributeModifiers(@NotNull ItemStack stack) {
         return super.getDefaultAttributeModifiers(stack)
                 .withModifierAdded(AttributeEventHandler.schoolToDefenseAttribute.get(resistanceMap.getOrDefault(this.element, SpellSchools.ELEMENTAL)), new AttributeModifier(ArsElemental.prefix("elemental_weakness_armor_" + this.type.getName()), 25, AttributeModifier.Operation.ADD_VALUE), EquipmentSlotGroup.bySlot(this.type.getSlot()))
-                .withModifierAdded(AttributeEventHandler.schoolToDefenseAttribute.get(this.element), new AttributeModifier(ArsElemental.prefix("elemental_defense_armor_" + this.type.getName()), 50, AttributeModifier.Operation.ADD_VALUE), EquipmentSlotGroup.bySlot(this.type.getSlot()))
-                .withModifierAdded(AttributeEventHandler.schoolToPowerAttribute.get(this.element), new AttributeModifier(ArsElemental.prefix("elemental_power_armor_" + this.type.getName()), 0.5, AttributeModifier.Operation.ADD_VALUE), EquipmentSlotGroup.bySlot(this.type.getSlot()));
+                .withModifierAdded(AttributeEventHandler.schoolToDefenseAttribute.get(this.element), new AttributeModifier(ArsElemancy.prefix("elemental_defense_armor_" + this.type.getName()), 50, AttributeModifier.Operation.ADD_VALUE), EquipmentSlotGroup.bySlot(this.type.getSlot()))
+                .withModifierAdded(AttributeEventHandler.schoolToPowerAttribute.get(this.element), new AttributeModifier(ArsElemancy.prefix("elemental_power_armor_" + this.type.getName()), 0.5, AttributeModifier.Operation.ADD_VALUE), EquipmentSlotGroup.bySlot(this.type.getSlot()));
     }
 
-    @Override
-    public void appendHoverText(@NotNull ItemStack stack, @NotNull TooltipContext context, @NotNull List<Component> tooltip, @NotNull TooltipFlag flags) {
-        super.appendHoverText(stack, context, tooltip, flags);
-        tooltip.add(Component.literal("Set bonus, Model and Texture still work in progress, currently same as medium variant." + (ConfigHandler.Startup.ENABLE_ARMOR_REWORK.get() ? " Thread slots will change with beta features enabled." : "")).withStyle(ChatFormatting.RED));
-    }
+  //  @Override
+ //   public void appendHoverText(@NotNull ItemStack stack, @NotNull TooltipContext context, @NotNull List<Component> tooltip, @NotNull TooltipFlag flags) {
+ //       super.appendHoverText(stack, context, tooltip, flags);
+ //       tooltip.add(Component.literal("Set bonus, Model and Texture still work in progress, currently same as medium variant." + (ConfigHandler.Startup.ENABLE_ARMOR_REWORK.get() ? " Thread slots will change with beta features enabled." : "")).withStyle(ChatFormatting.RED));
+ //   }
 }
