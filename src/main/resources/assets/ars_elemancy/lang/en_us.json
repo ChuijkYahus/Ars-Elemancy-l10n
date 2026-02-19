@@ -95,5 +95,19 @@
   "tooltip.ars_elemancy.focus_boost.silt": "Amplifies and discount glyphs of the Earth and Air schools.",
   "tooltip.ars_elemancy.focus_boost.vapor": "Amplifies and discount glyphs of the Fire and Water schools.",
   "tooltip.ars_elemancy.focus_boost.elemental": "Amplifies and discount glyphs of all 4 schools.",
-  "ars_nouveau.school.elemental": "Amplifies and discount glyphs of all 4 schools."
+  "ars_nouveau.school.elemental": "Amplifies and discount glyphs of all 4 schools.",
+  "ars_elemancy.armor_set.tempest_heavy": "Stormguard's Set",
+  "ars_elemancy.armor_set.tempest_light": "Kirin's Set",
+  "ars_elemancy.armor_set.silt_heavy": "Desertuard's Set",
+  "ars_elemancy.armor_set.siltt_light": "Sphinx's Set",
+  "ars_elemancy.armor_set.mire_heavy": "Swampguard's Set",
+  "ars_elemancy.armor_set.mire_light": "Hydra's Set",
+  "ars_elemancy.armor_set.vapor_heavy": "Steamguard's Set",
+  "ars_elemancy.armor_set.vapor_light": "Bannik's Set",
+  "ars_elemancy.armor_set.cinder_heavy": "Ashguard's Set",
+  "ars_elemancy.armor_set.cinder_light": "Phoenix's Set",
+  "ars_elemancy.armor_set.lava_heavy": "Magmaguard's Set",
+  "ars_elemancy.armor_set.lava_light": "Typhon's Set",
+  "ars_elemancy.armor_set.elemancer_heavy": "Omniguard's Set",
+  "ars_elemancy.armor_set.elemancer_light": "Tiamat's Set"
 }

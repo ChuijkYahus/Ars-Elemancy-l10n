@@ -1,7 +1,6 @@
 package lyrellion.ars_elemancy.common.items.armor;
 
 import alexthw.ars_elemental.common.items.armor.ElementalArmor;
-import alexthw.ars_elemental.common.items.armor.LightArmorE;
 import com.hollingsworth.arsnouveau.api.spell.SpellSchool;
 import com.hollingsworth.arsnouveau.api.spell.SpellSchools;
 import net.minecraft.world.entity.EquipmentSlot;
@@ -33,10 +32,10 @@ public class ArmorSet {
             SpellSchools.ELEMENTAL_FIRE, SpellSchools.ELEMENTAL_EARTH
     );
     protected String name;
-    protected DeferredHolder<Item, MediumArmorE> head;
-    protected DeferredHolder<Item, MediumArmorE> chest;
-    protected DeferredHolder<Item, MediumArmorE> legs;
-    protected DeferredHolder<Item, MediumArmorE> feet;
+    protected DeferredHolder<Item, ElemancyArmor> head;
+    protected DeferredHolder<Item, ElemancyArmor> chest;
+    protected DeferredHolder<Item, ElemancyArmor> legs;
+    protected DeferredHolder<Item, ElemancyArmor> feet;
 
     public static class Light extends ArmorSet {
         public Light(String name, SpellSchool element) {
