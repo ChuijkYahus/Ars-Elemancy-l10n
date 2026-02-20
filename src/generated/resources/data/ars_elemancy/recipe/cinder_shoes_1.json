@@ -1,0 +1,26 @@
+{
+  "type": "sauce:armor_upgrade",
+  "pedestalItems": [
+    {
+      "item": "ars_elemental:mark_of_mastery"
+    },
+    {
+      "item": "ars_elemancy:cinder_essence"
+    },
+    {
+      "item": "ars_elemancy:cinder_essence"
+    },
+    {
+      "item": "ars_elemental:fire_shoes"
+    }
+
+  ],
+  "reagent": {
+    "item": "ars_elemental:air_shoes"
+  },
+  "result": {
+    "count": 1,
+    "id": "ars_elemancy:cinder_shoes"
+  },
+  "sourceCost": 7000
+}

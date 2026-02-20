@@ -1,8 +1,8 @@
 package lyrellion.ars_elemancy.registry;
 
+import com.alexthw.sauce.common.recipe.ElementalArmorRecipe;
 import com.hollingsworth.arsnouveau.setup.registry.CreativeTabRegistry;
 import com.mojang.serialization.MapCodec;
-import lyrellion.ars_elemancy.recipe.ElemancyArmorRecipe;
 import net.minecraft.core.Registry;
 import net.minecraft.core.component.DataComponentType;
 import net.minecraft.core.registries.BuiltInRegistries;
@@ -52,12 +52,12 @@ public class ModRegistry {
     }
 
     public static final DeferredHolder<CreativeModeTab, CreativeModeTab> ELEMANCY_TAB;
-    public static final DeferredHolder<RecipeType<?>, RecipeType<ElemancyArmorRecipe>> ELEMANCY_ARMOR_UP;
-    public static final DeferredHolder<RecipeSerializer<?>, RecipeSerializer<ElemancyArmorRecipe>> ELEMANCY_ARMOR_UP_SERIALIZER;
+    public static final DeferredHolder<RecipeType<?>, RecipeType<ElementalArmorRecipe>> ELEMANCY_ARMOR_UP;
+    public static final DeferredHolder<RecipeSerializer<?>, RecipeSerializer<ElementalArmorRecipe>> ELEMANCY_ARMOR_UP_SERIALIZER;
 
     static {
         ELEMANCY_ARMOR_UP = RECIPES.register("armor_upgrade", () -> RecipeType.simple(prefix("armor_upgrade")));
-        ELEMANCY_ARMOR_UP_SERIALIZER = SERIALIZERS.register("armor_upgrade", ElemancyArmorRecipe.Serializer::new);
+        ELEMANCY_ARMOR_UP_SERIALIZER = SERIALIZERS.register("armor_upgrade", ElementalArmorRecipe.Serializer::new);
 
         ELEMANCY_TAB = TABS.register("general", () -> {
             return CreativeModeTab.builder()

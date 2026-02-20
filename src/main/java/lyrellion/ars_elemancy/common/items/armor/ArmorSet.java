@@ -37,6 +37,7 @@ public class ArmorSet {
     protected DeferredHolder<Item, ElemancyArmor> legs;
     protected DeferredHolder<Item, ElemancyArmor> feet;
 
+
     public static class Light extends ArmorSet {
         public Light(String name, SpellSchool element) {
             this.name = name;

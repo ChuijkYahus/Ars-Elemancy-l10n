@@ -22,6 +22,7 @@ import java.util.List;
 
 import static alexthw.ars_elemental.ConfigHandler.*;
 import static lyrellion.ars_elemancy.common.items.armor.ArmorSet.resistanceMap;
+import static lyrellion.ars_elemancy.common.items.armor.ArmorSet.weaknessMap;
 
 public class HeavyArmorE extends ElemancyArmor {
 
@@ -36,15 +37,19 @@ public class HeavyArmorE extends ElemancyArmor {
 
     @Override
     public @NotNull ItemAttributeModifiers getDefaultAttributeModifiers(@NotNull ItemStack stack) {
-        return super.getDefaultAttributeModifiers(stack)
-                .withModifierAdded(AttributeEventHandler.schoolToDefenseAttribute.get(resistanceMap.getOrDefault(this.element, SpellSchools.ELEMENTAL)), new AttributeModifier(ArsElemental.prefix("elemental_weakness_armor_" + this.type.getName()), 25, AttributeModifier.Operation.ADD_VALUE), EquipmentSlotGroup.bySlot(this.type.getSlot()))
-                .withModifierAdded(AttributeEventHandler.schoolToDefenseAttribute.get(this.element), new AttributeModifier(ArsElemancy.prefix("elemental_defense_armor_" + this.type.getName()), 50, AttributeModifier.Operation.ADD_VALUE), EquipmentSlotGroup.bySlot(this.type.getSlot()))
-                .withModifierAdded(AttributeEventHandler.schoolToPowerAttribute.get(this.element), new AttributeModifier(ArsElemancy.prefix("elemental_power_armor_" + this.type.getName()), 0.5, AttributeModifier.Operation.ADD_VALUE), EquipmentSlotGroup.bySlot(this.type.getSlot()));
-    }
+        ItemAttributeModifiers itemAttributeModifiers = super.getDefaultAttributeModifiers(stack);
 
-  //  @Override
- //   public void appendHoverText(@NotNull ItemStack stack, @NotNull TooltipContext context, @NotNull List<Component> tooltip, @NotNull TooltipFlag flags) {
- //       super.appendHoverText(stack, context, tooltip, flags);
- //       tooltip.add(Component.literal("Set bonus, Model and Texture still work in progress, currently same as medium variant." + (ConfigHandler.Startup.ENABLE_ARMOR_REWORK.get() ? " Thread slots will change with beta features enabled." : "")).withStyle(ChatFormatting.RED));
- //   }
+        if (element == SpellSchools.ELEMENTAL)
+            return itemAttributeModifiers.withModifierAdded(AttributeEventHandler.schoolToDefenseAttribute.get(this.element), new AttributeModifier(ArsElemental.prefix("elemental_defense_armor_" + this.type.getName()), 75, AttributeModifier.Operation.ADD_VALUE), EquipmentSlotGroup.bySlot(this.type.getSlot()))
+                    .withModifierAdded(AttributeEventHandler.schoolToPowerAttribute.get(this.element), new AttributeModifier(ArsElemental.prefix("elemental_power_armor_" + this.type.getName()), 0.5, AttributeModifier.Operation.ADD_VALUE), EquipmentSlotGroup.bySlot(this.type.getSlot()));
+
+        for (var school : this.element.getSubSchools()) {
+            if (school == SpellSchools.ELEMENTAL) continue;
+            itemAttributeModifiers = itemAttributeModifiers.withModifierAdded(AttributeEventHandler.schoolToDefenseAttribute.get(weaknessMap.getOrDefault(school, SpellSchools.ELEMENTAL)), new AttributeModifier(ArsElemental.prefix("elemental_weakness_armor_" + this.type.getName()), 25, AttributeModifier.Operation.ADD_VALUE), EquipmentSlotGroup.bySlot(this.type.getSlot()))
+                    .withModifierAdded(AttributeEventHandler.schoolToDefenseAttribute.get(school), new AttributeModifier(ArsElemental.prefix("elemental_defense_armor_" + this.type.getName()), 50, AttributeModifier.Operation.ADD_VALUE), EquipmentSlotGroup.bySlot(this.type.getSlot()))
+                    .withModifierAdded(AttributeEventHandler.schoolToPowerAttribute.get(school), new AttributeModifier(ArsElemental.prefix("elemental_power_armor_" + this.type.getName()), 0.5, AttributeModifier.Operation.ADD_VALUE), EquipmentSlotGroup.bySlot(this.type.getSlot()));
+        }
+
+        return itemAttributeModifiers;
+    }
 }

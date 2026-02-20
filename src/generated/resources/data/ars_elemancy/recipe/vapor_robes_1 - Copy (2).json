@@ -1,0 +1,25 @@
+{
+  "type": "sauce:armor_upgrade",
+  "pedestalItems": [
+    {
+      "item": "ars_elemental:mark_of_mastery"
+    },
+    {
+      "item": "ars_elemancy:vapor_essence"
+    },
+    {
+      "item": "ars_elemancy:vapor_essence"
+    },
+    {
+      "item": "ars_elemental:aqua_chestplate"
+    }
+  ],
+  "reagent": {
+    "item": "ars_elemental:fire_chestplate"
+  },
+  "result": {
+    "count": 1,
+    "id": "ars_elemancy:vapor_chestplate"
+  },
+  "sourceCost": 7000
+}

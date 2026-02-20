@@ -1,0 +1,25 @@
+{
+  "type": "sauce:armor_upgrade",
+  "pedestalItems": [
+    {
+      "item": "ars_elemental:mark_of_mastery"
+    },
+    {
+      "item": "ars_elemancy:lava_essence"
+    },
+    {
+      "item": "ars_elemancy:lava_essence"
+    },
+    {
+      "item": "ars_elemental:fire_helmet"
+    }
+  ],
+  "reagent": {
+    "item": "ars_elemental:earth_helmet"
+  },
+  "result": {
+    "count": 1,
+    "id": "ars_elemancy:lava_helmet"
+  },
+  "sourceCost": 7000
+}

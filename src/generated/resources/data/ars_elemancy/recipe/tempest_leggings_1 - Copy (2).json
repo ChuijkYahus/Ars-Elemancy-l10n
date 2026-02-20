@@ -1,0 +1,25 @@
+{
+  "type": "sauce:armor_upgrade",
+  "pedestalItems": [
+    {
+      "item": "ars_elemental:mark_of_mastery"
+    },
+    {
+      "item": "ars_elemancy:tempest_essence"
+    },
+    {
+      "item": "ars_elemancy:tempest_essence"
+    },
+    {
+      "item": "ars_elemental:aqua_leggings_heavy"
+    }
+  ],
+  "reagent": {
+    "item": "ars_elemental:air_leggings_heavy"
+  },
+  "result": {
+    "count": 1,
+    "id": "ars_elemancy:tempest_leggings_heavy"
+  },
+  "sourceCost": 7000
+}

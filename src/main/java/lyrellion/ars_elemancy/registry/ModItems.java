@@ -47,7 +47,7 @@ public class ModItems {
     public static final ArmorSet LAVA_ARMOR = new ArmorSet.Medium("lava", ArsNouveauRegistry.LAVA);
     public static final ArmorSet VAPOR_ARMOR = new ArmorSet.Medium("vapor", ArsNouveauRegistry.VAPOR);
     public static final ArmorSet CINDER_ARMOR = new ArmorSet.Medium("cinder", ArsNouveauRegistry.CINDER);
-    public static final ArmorSet ELEMANCER_ARMOR = new ArmorSet.Medium("elemancer", ArsNouveauRegistry.ELEMENTAL);
+    public static final ArmorSet ELEMANCER_ARMOR = new ArmorSet.Medium("elemancer", SpellSchools.ELEMENTAL);
 
     public static final ArmorSet TEMPEST_ARMOR_L;
     public static final ArmorSet SILT_ARMOR_L;
@@ -85,7 +85,6 @@ public class ModItems {
     public static final DeferredHolder<Item, ElemancyBangle> ELEMANCER_BANGLE = ITEMS.register("elemancer_bangle", () -> new ElemancyBangle(bangleProps(), SpellSchools.ELEMENTAL));
 
     static {
-
 
         TEMPEST_ARMOR_H = new ArmorSet.Heavy("tempest",ArsNouveauRegistry.TEMPEST);
         SILT_ARMOR_H = new ArmorSet.Heavy("silt",ArsNouveauRegistry.SILT);

@@ -1,12 +1,12 @@
 package lyrellion.ars_elemancy.client.patchouli;
 
+import com.alexthw.sauce.common.recipe.ElementalArmorRecipe;
 import com.hollingsworth.arsnouveau.api.ArsNouveauAPI;
 import com.hollingsworth.arsnouveau.client.patchouli.component.RotatingItemListComponent;
 import com.hollingsworth.arsnouveau.common.armor.AnimatedMagicArmor;
 import com.hollingsworth.arsnouveau.common.crafting.recipes.IEnchantingRecipe;
 import com.hollingsworth.arsnouveau.common.items.data.ArmorPerkHolder;
 import com.hollingsworth.arsnouveau.setup.registry.DataComponentRegistry;
-import lyrellion.ars_elemancy.recipe.ElemancyArmorRecipe;
 import lyrellion.ars_elemancy.registry.ModRegistry;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.multiplayer.ClientLevel;
@@ -24,11 +24,11 @@ public class ElemancyArmorRotatingItemListComponent extends RotatingItemListComp
         ClientLevel world = Minecraft.getInstance().level;
         if (world == null) return new ArrayList<>();
 
-        RecipeHolder<ElemancyArmorRecipe> holder = world.getRecipeManager().getAllRecipesFor(ModRegistry.ELEMANCY_ARMOR_UP.get()).stream().filter(f -> f.id().toString().equals(recipeName)).findFirst().orElse(null);
+        RecipeHolder<ElementalArmorRecipe> holder = world.getRecipeManager().getAllRecipesFor(ModRegistry.ELEMANCY_ARMOR_UP.get()).stream().filter(f -> f.id().toString().equals(recipeName)).findFirst().orElse(null);
         var recipe = holder != null ? holder.value() : null;
         for (RecipeType<? extends IEnchantingRecipe> type : ArsNouveauAPI.getInstance().getEnchantingRecipeTypes()) {
             RecipeHolder<? extends IEnchantingRecipe> recipe1 = world.getRecipeManager().getAllRecipesFor(type).stream().filter(f -> f.id().toString().equals(recipeName)).findFirst().orElse(null);
-            if (recipe1 != null && recipe1.value() instanceof ElemancyArmorRecipe enchantingApparatusRecipe) {
+            if (recipe1 != null && recipe1.value() instanceof ElementalArmorRecipe enchantingApparatusRecipe) {
                 recipe = enchantingApparatusRecipe;
                 break;
             }

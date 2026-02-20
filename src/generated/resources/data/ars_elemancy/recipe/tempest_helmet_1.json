@@ -1,0 +1,25 @@
+{
+  "type": "sauce:armor_upgrade",
+  "pedestalItems": [
+    {
+      "item": "ars_elemental:mark_of_mastery"
+    },
+    {
+      "item": "ars_elemancy:tempest_essence"
+    },
+    {
+      "item": "ars_elemancy:tempest_essence"
+    },
+    {
+      "item": "ars_elemental:aqua_helmet"
+    }
+  ],
+  "reagent": {
+    "item": "ars_elemental:air_helmet"
+  },
+  "result": {
+    "count": 1,
+    "id": "ars_elemancy:tempest_helmet"
+  },
+  "sourceCost": 7000
+}

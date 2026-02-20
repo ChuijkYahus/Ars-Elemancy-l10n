@@ -1,10 +1,9 @@
 package lyrellion.ars_elemancy.datagen;
 
+import com.alexthw.sauce.common.recipe.ElementalArmorRecipe;
 import it.unimi.dsi.fastutil.objects.Object2IntArrayMap;
-import it.unimi.dsi.fastutil.objects.ObjectImmutableList;
 import lyrellion.ars_elemancy.ArsElemancy;
 import lyrellion.ars_elemancy.common.items.armor.ArmorSet;
-import lyrellion.ars_elemancy.recipe.ElemancyArmorRecipe;
 import lyrellion.ars_elemancy.registry.ModItems;
 import com.hollingsworth.arsnouveau.common.crafting.recipes.EnchantingApparatusRecipe;
 import com.hollingsworth.arsnouveau.common.datagen.ApparatusRecipeBuilder;
@@ -15,7 +14,6 @@ import net.minecraft.data.DataGenerator;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.level.ItemLike;
 import net.neoforged.neoforge.registries.DeferredHolder;
-import net.neoforged.neoforge.registries.DeferredItem;
 
 import java.nio.file.Path;
 import java.util.ArrayList;
@@ -231,7 +229,7 @@ public class AEApparatusProvider extends ApparatusRecipeProvider {
         @Override
         public RecipeWrapper<EnchantingApparatusRecipe> build() {
             var wrapper = super.build();
-            return new RecipeWrapper<>(wrapper.id(), new ElemancyArmorRecipe(wrapper.recipe().reagent(), wrapper.recipe().result(), wrapper.recipe().pedestalItems(), wrapper.recipe().sourceCost()), ElemancyArmorRecipe.CODEC);
+            return new RecipeWrapper<>(wrapper.id(), new ElementalArmorRecipe(wrapper.recipe().reagent(), wrapper.recipe().result(), wrapper.recipe().pedestalItems(), wrapper.recipe().sourceCost()), ElementalArmorRecipe.CODEC);
         }
     }
 

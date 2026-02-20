@@ -1,0 +1,25 @@
+{
+  "type": "sauce:armor_upgrade",
+  "pedestalItems": [
+    {
+      "item": "ars_elemental:mark_of_mastery"
+    },
+    {
+      "item": "ars_elemancy:elemancer_essence"
+    },
+    {
+      "item": "ars_elemancy:elemancer_essence"
+    },
+    {
+      "item": "ars_elemancy:mire_pants"
+    }
+  ],
+  "reagent": {
+    "item": "ars_elemancy:cinder_pants"
+  },
+  "result": {
+    "count": 1,
+    "id": "ars_elemancy:elemancer_pants"
+  },
+  "sourceCost": 7000
+}

@@ -1,0 +1,25 @@
+{
+  "type": "sauce:armor_upgrade",
+  "pedestalItems": [
+    {
+      "item": "ars_elemental:mark_of_mastery"
+    },
+    {
+      "item": "ars_elemancy:silt_essence"
+    },
+    {
+      "item": "ars_elemancy:silt_essence"
+    },
+    {
+      "item": "ars_elemental:air_boots_heavy"
+    }
+  ],
+  "reagent": {
+    "item": "ars_elemental:earth_boots_heavy"
+  },
+  "result": {
+    "count": 1,
+    "id": "ars_elemancy:silt_boots_heavy"
+  },
+  "sourceCost": 7000
+}

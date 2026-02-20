@@ -1,0 +1,25 @@
+{
+  "type": "sauce:armor_upgrade",
+  "pedestalItems": [
+    {
+      "item": "ars_elemental:mark_of_mastery"
+    },
+    {
+      "item": "ars_elemancy:silt_essence"
+    },
+    {
+      "item": "ars_elemancy:silt_essence"
+    },
+    {
+      "item": "ars_elemental:earth_helmet"
+    }
+  ],
+  "reagent": {
+    "item": "ars_elemental:air_helmet"
+  },
+  "result": {
+    "count": 1,
+    "id": "ars_elemancy:silt_helmet"
+  },
+  "sourceCost": 7000
+}

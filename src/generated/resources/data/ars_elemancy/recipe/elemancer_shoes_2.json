@@ -1,0 +1,25 @@
+{
+  "type": "sauce:armor_upgrade",
+  "pedestalItems": [
+    {
+      "item": "ars_elemental:mark_of_mastery"
+    },
+    {
+      "item": "ars_elemancy:elemancer_essence"
+    },
+    {
+      "item": "ars_elemancy:elemancer_essence"
+    },
+    {
+      "item": "ars_elemancy:tempest_shoes"
+    }
+  ],
+  "reagent": {
+    "item": "ars_elemancy:lava_shoes"
+  },
+  "result": {
+    "count": 1,
+    "id": "ars_elemancy:elemancer_shoes"
+  },
+  "sourceCost": 7000
+}

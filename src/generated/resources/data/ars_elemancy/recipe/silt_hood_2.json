@@ -1,0 +1,25 @@
+{
+  "type": "sauce:armor_upgrade",
+  "pedestalItems": [
+    {
+      "item": "ars_elemental:mark_of_mastery"
+    },
+    {
+      "item": "ars_elemancy:silt_essence"
+    },
+    {
+      "item": "ars_elemancy:silt_essence"
+    },
+    {
+      "item": "ars_elemental:air_hood"
+    }
+  ],
+  "reagent": {
+    "item": "ars_elemental:earth_hood"
+  },
+  "result": {
+    "count": 1,
+    "id": "ars_elemancy:silt_hood"
+  },
+  "sourceCost": 7000
+}
