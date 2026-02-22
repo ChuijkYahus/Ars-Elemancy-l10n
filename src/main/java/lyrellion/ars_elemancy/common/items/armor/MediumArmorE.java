@@ -17,7 +17,7 @@ import static lyrellion.ars_elemancy.common.items.armor.ArmorSet.weaknessMap;
 public class MediumArmorE extends ElemancyArmor {
 
     public MediumArmorE(ArmorItem.Type slot, SpellSchool element, Properties builder) {
-        super(slot, element, schoolToMaterial(element.getId()), builder.durability(slot.getDurability(35)));
+        super(slot, element, schoolToMaterial(element.getId()), builder.durability(slot.getDurability(35)), "medium_armor_e");
     }
 
     @Override

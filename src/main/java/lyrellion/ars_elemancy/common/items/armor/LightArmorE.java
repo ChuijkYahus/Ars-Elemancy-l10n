@@ -23,7 +23,7 @@ import static lyrellion.ars_elemancy.common.items.armor.ArmorSet.weaknessMap;
 public class LightArmorE extends ElemancyArmor {
 
     public LightArmorE(ArmorItem.Type slot, SpellSchool element, Properties builder) {
-        super(slot, element, schoolToMaterial(element.getId() + "_light"), builder.durability(slot.getDurability(30)));
+        super(slot, element, schoolToMaterial(element.getId() + "_light"), builder.durability(slot.getDurability(30)), "light_armor_e");
     }
 
 //    @Override

@@ -29,7 +29,7 @@ public class ElemancyArmorModel<T extends IElemancyArmor & GeoItem> extends GeoM
     }
 
     public GeoModel<T> withEmptyAnim() {
-        this.animationLoc = ResourceLocation.fromNamespaceAndPath(ArsNouveau.MODID, "animations/empty.json");
+        this.animationLoc = ResourceLocation.fromNamespaceAndPath(ArsElemancy.MODID, "animations/idlearmor.animation.json");
         return this;
     }
 

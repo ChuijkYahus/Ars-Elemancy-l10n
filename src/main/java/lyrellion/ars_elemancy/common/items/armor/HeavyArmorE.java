@@ -27,7 +27,7 @@ import static lyrellion.ars_elemancy.common.items.armor.ArmorSet.weaknessMap;
 public class HeavyArmorE extends ElemancyArmor {
 
     public HeavyArmorE(ArmorItem.Type slot, SpellSchool element, Properties builder) {
-        super(slot, element, schoolToMaterial(element.getId() + "_heavy"), builder.durability(slot.getDurability(50)));
+        super(slot, element, schoolToMaterial(element.getId() + "_heavy"), builder.durability(slot.getDurability(50)), "heavy_armor_e");
     }
 
     @Override

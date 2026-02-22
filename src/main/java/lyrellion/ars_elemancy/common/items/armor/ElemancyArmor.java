@@ -101,7 +101,7 @@ public class ElemancyArmor extends AnimatedMagicArmor implements IElemancyArmor,
     public void appendHoverText(@NotNull ItemStack stack, @NotNull TooltipContext context, @NotNull List<Component> tooltip, @NotNull TooltipFlag flags) {
         var perkProvider = PerkUtil.getPerkHolder(stack);
         if (perkProvider != null) {
-            tooltip.add(Component.translatable("ars_nouveau.tier", 4).withStyle(ChatFormatting.GOLD));
+            tooltip.add(Component.translatable("ars_nouveau.tier", 5).withStyle(ChatFormatting.GOLD));
             perkProvider.appendPerkTooltip(tooltip, stack);
         }
         TooltipUtils.addOnShift(tooltip, () -> addInformationAfterShift(stack, context, tooltip, flags), "armor_set");
@@ -110,8 +110,8 @@ public class ElemancyArmor extends AnimatedMagicArmor implements IElemancyArmor,
     EquipmentSlot[] OrderedSlots = {EquipmentSlot.HEAD, EquipmentSlot.CHEST, EquipmentSlot.LEGS, EquipmentSlot.FEET};
 
     @SuppressWarnings({"unchecked", "rawtypes"})
-    public ElemancyArmor(ArmorItem.Type slot, SpellSchool element, Holder<ArmorMaterial> material, Properties builder) {
-        super(material, slot, builder, new ElemancyArmorModel("medium_armor_e").withEmptyAnim());
+    public ElemancyArmor(ArmorItem.Type slot, SpellSchool element, Holder<ArmorMaterial> material, Properties builder, String modelName) {
+        super(material, slot, builder, new ElemancyArmorModel(modelName).withEmptyAnim());
         this.element = element;
     }
 
