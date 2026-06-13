@@ -3,16 +3,10 @@
   "keepNbtOfReagent": false,
   "pedestalItems": [
     {
-      "item": "ars_elemental:fire_focus"
+      "item": "ars_elemancy:vapor_focus"
     },
     {
-      "item": "ars_elemental:air_focus"
-    },
-    {
-      "item": "ars_elemental:earth_focus"
-    },
-    {
-      "item": "ars_elemental:water_focus"
+      "item": "ars_elemancy:silt_focus"
     }
   ],
   "reagent": {
