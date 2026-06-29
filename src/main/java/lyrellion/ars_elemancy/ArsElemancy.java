@@ -1,5 +1,7 @@
 package lyrellion.ars_elemancy;
 
+import com.hollingsworth.arsnouveau.ArsNouveau;
+import com.hollingsworth.arsnouveau.common.entity.Starbuncle;
 import lyrellion.ars_elemancy.client.SpellFocusRenderer;
 import lyrellion.ars_elemancy.registry.ModItems;
 import lyrellion.ars_elemancy.registry.ModRegistry;
@@ -44,6 +46,11 @@ public class ArsElemancy {
         }
         ArsNouveauAPI.ENABLE_DEBUG_NUMBERS = !FMLEnvironment.production;
 
+    }
+
+    static {
+        Starbuncle.TEXTURES.put("Lyrellion", ArsElemancy.prefix("textures/entity/starbuncle_lyrellion.png"));
+        Starbuncle.MODELS.put("Lyrellion", ArsElemancy.prefix("geo/starbuncle_lyrellion.geo.json"));
     }
 
     public static ResourceLocation prefix(String path) {
